@@ -45,8 +45,9 @@ public class SignUp extends AppCompatActivity {
                             Toast.makeText(SignUp.this,"Phone number already register", Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            User user = new User(edtName.getText().toString(),edtPassword.getText().toString());
+                            User user = new User(edtName.getText().toString(),edtPassword.getText().toString(),"user");
                             table_user.child(edtPhone.getText().toString()).setValue(user);
+
                             Toast.makeText(SignUp.this,"Sign up successfully ", Toast.LENGTH_SHORT).show();
                         }
                     }

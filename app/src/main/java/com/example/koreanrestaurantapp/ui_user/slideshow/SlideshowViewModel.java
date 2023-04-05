@@ -1,4 +1,4 @@
-package com.example.koreanrestaurantapp.ui.slideshow;
+package com.example.koreanrestaurantapp.ui_user.slideshow;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

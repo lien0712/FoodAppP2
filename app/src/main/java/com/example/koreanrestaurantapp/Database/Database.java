@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Database extends SQLiteAssetHelper {
 
-    private static String DB_NAME="orderDetail.db";
+    private static String DB_NAME="orderDetail(p2)addcategory.db";
     private static int DB_VER=1;
 
 

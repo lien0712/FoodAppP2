@@ -1,4 +1,4 @@
-package com.example.koreanrestaurantapp.ui.slideshow;
+package com.example.koreanrestaurantapp.ui_user.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,22 +8,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.koreanrestaurantapp.databinding.FragmentSlideshowBinding;
+import com.example.koreanrestaurantapp.databinding.FragmentGalleryBinding;
 
-public class SlideshowFragment extends Fragment {
+public class GalleryFragment extends Fragment {
 
-private FragmentSlideshowBinding binding;
+private FragmentGalleryBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        SlideshowViewModel slideshowViewModel =
-                new ViewModelProvider(this).get(SlideshowViewModel.class);
+        GalleryViewModel galleryViewModel =
+                new ViewModelProvider(this).get(GalleryViewModel.class);
 
-    binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+    binding = FragmentGalleryBinding.inflate(inflater, container, false);
     View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final TextView textView = binding.textGallery;
+        galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

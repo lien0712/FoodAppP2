@@ -1,4 +1,4 @@
-package com.example.koreanrestaurantapp.ui.home;
+package com.example.koreanrestaurantapp.ui_user.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

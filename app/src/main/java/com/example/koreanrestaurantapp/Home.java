@@ -2,22 +2,26 @@ package com.example.koreanrestaurantapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 //import android.widget.Toolbar;
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.koreanrestaurantapp.Common.Common;
 import com.example.koreanrestaurantapp.Interface.ItemClickListener;
 import com.example.koreanrestaurantapp.ViewHolder.MenuViewHolder;
 import com.example.koreanrestaurantapp.model.Category;
+import com.example.koreanrestaurantapp.model.Order;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.view.GravityCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -44,6 +48,7 @@ public class Home extends AppCompatActivity {
     RecyclerView recycler_menu;
     RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +89,34 @@ public class Home extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
         txtFullName= (TextView) headerView.findViewById(R.id.txtFullName);
        // txtFullName.setText(Common.currentUser.getName());
+
+        nv= findViewById(R.id.nav_view);
+        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                int id = item.getItemId();
+                if (id== R.id.nav_menu){
+
+                } else if (id == R.id.nav_cart) {
+                    Intent cartIntent= new Intent(Home.this, Cart.class);
+                    startActivity(cartIntent);
+                    Toast.makeText(Home.this,"Cart",Toast.LENGTH_SHORT).show();
+                } else if (id==R.id.nav_orders) {
+                    Intent orderIntent= new Intent(Home.this, OrderStatus.class);
+                    startActivity(orderIntent);
+                    Toast.makeText(Home.this,"Order",Toast.LENGTH_SHORT).show();
+                } else if (id==R.id.nav_logout) {
+                    Intent signOutIntent= new Intent(Home.this, MainActivity.class);
+                    signOutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(signOutIntent);
+                }
+                DrawerLayout drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+                drawerLayout.closeDrawer(GravityCompat.START);
+
+                return true;
+            }
+        });
 
         //Load Menu
         recycler_menu=(RecyclerView) findViewById(R.id.recycler_menu);
@@ -130,4 +163,32 @@ public class Home extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+/*
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if (id== R.id.nav_menu){
+
+        } else if (id == R.id.nav_cart) {
+            Intent cartIntent= new Intent(Home.this, Cart.class);
+            startActivity(cartIntent);
+            Toast.makeText(Home.this,"Cart",Toast.LENGTH_SHORT).show();
+        } else if (id==R.id.nav_orders) {
+            Intent orderIntent= new Intent(Home.this, OrderStatus.class);
+            startActivity(orderIntent);
+        } else if (id==R.id.nav_logout) {
+            Intent signOutIntent= new Intent(Home.this, MainActivity.class);
+            signOutIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(signOutIntent);
+        }
+        DrawerLayout drawerLayout=(DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+
+    }
+*/
+
+
 }

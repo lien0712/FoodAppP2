@@ -17,6 +17,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+
     <style name="Theme.KoreanRestaurantApp.AppBarOverlay"
         parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.KoreanRestaurantApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

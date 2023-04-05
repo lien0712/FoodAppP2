@@ -49,7 +49,11 @@ public class FoodList extends AppCompatActivity {
     }
 
     private void loadListFood(String categoryId) {
-        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(Food.class,R.layout.food_item,FoodViewHolder.class,foodList.orderByChild("menuId").equalTo(categoryId))
+        adapter = new FirebaseRecyclerAdapter<Food, FoodViewHolder>(
+                Food.class,
+                R.layout.food_item,
+                FoodViewHolder.class,
+                foodList.orderByChild("menuId").equalTo(categoryId))
             //like Select * from Foods where MenuId=
         {
             @Override
